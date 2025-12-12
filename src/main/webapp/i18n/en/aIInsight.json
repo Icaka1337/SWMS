@@ -1,0 +1,28 @@
+{
+  "swmsApp": {
+    "aIInsight": {
+      "home": {
+        "title": "AI Insights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new AI Insight",
+        "createOrEditLabel": "Create or edit a AI Insight",
+        "notFound": "No AI Insights found"
+      },
+      "created": "A new AI Insight is created with identifier {{ param }}",
+      "updated": "A AI Insight is updated with identifier {{ param }}",
+      "deleted": "A AI Insight is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete AI Insight {{ id }}?"
+      },
+      "detail": {
+        "title": "AI Insight"
+      },
+      "id": "ID",
+      "type": "Type",
+      "message": "Message",
+      "confidence": "Confidence",
+      "generatedAt": "Generated At",
+      "product": "Product"
+    }
+  }
+}

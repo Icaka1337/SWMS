@@ -1,0 +1,28 @@
+{
+  "swmsApp": {
+    "supplier": {
+      "home": {
+        "title": "Suppliers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Supplier",
+        "createOrEditLabel": "Създайте или редактирайте Supplier",
+        "notFound": "Suppliers не са намерени"
+      },
+      "created": "Създаден е нов Supplier с идентификатор {{ param }}",
+      "updated": "Supplier с идентификатор {{ param }} e oбновен",
+      "deleted": "Supplier с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Supplier {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplier"
+      },
+      "id": "ID",
+      "name": "Name",
+      "contactInfo": "Contact Info",
+      "reliabilityScore": "Reliability Score",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  }
+}

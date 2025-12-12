@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (aIInsight(); as aIInsightRef) {
+      <div>
+        <h2 data-cy="aIInsightDetailsHeading"><span jhiTranslate="swmsApp.aIInsight.detail.title">AI Insight</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ aIInsightRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.aIInsight.type">Type</span></dt>
+          <dd>
+            <span>{{ aIInsightRef.type }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.aIInsight.message">Message</span></dt>
+          <dd>
+            <span>{{ aIInsightRef.message }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.aIInsight.confidence">Confidence</span></dt>
+          <dd>
+            <span>{{ aIInsightRef.confidence }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.aIInsight.generatedAt">Generated At</span></dt>
+          <dd>
+            <span>{{ aIInsightRef.generatedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.aIInsight.product">Product</span></dt>
+          <dd>
+            @if (aIInsight()!.product) {
+              <div>
+                <a [routerLink]="['/product', aIInsight()!.product?.id, 'view']">{{ aIInsightRef.product?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/ai-insight', aIInsightRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

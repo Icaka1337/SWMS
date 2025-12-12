@@ -1,0 +1,28 @@
+{
+  "swmsApp": {
+    "aIInsight": {
+      "home": {
+        "title": "AI Insights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов AI Insight",
+        "createOrEditLabel": "Създайте или редактирайте AI Insight",
+        "notFound": "AI Insights не са намерени"
+      },
+      "created": "Създаден е нов AI Insight с идентификатор {{ param }}",
+      "updated": "AI Insight с идентификатор {{ param }} e oбновен",
+      "deleted": "AI Insight с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете AI Insight {{ id }}?"
+      },
+      "detail": {
+        "title": "AI Insight"
+      },
+      "id": "ID",
+      "type": "Type",
+      "message": "Message",
+      "confidence": "Confidence",
+      "generatedAt": "Generated At",
+      "product": "Product"
+    }
+  }
+}

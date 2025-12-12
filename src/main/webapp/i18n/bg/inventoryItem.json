@@ -1,0 +1,27 @@
+{
+  "swmsApp": {
+    "inventoryItem": {
+      "home": {
+        "title": "Inventory Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Inventory Item",
+        "createOrEditLabel": "Създайте или редактирайте Inventory Item",
+        "notFound": "Inventory Items не са намерени"
+      },
+      "created": "Създаден е нов Inventory Item с идентификатор {{ param }}",
+      "updated": "Inventory Item с идентификатор {{ param }} e oбновен",
+      "deleted": "Inventory Item с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Inventory Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventory Item"
+      },
+      "id": "ID",
+      "quantity": "Quantity",
+      "lastUpdated": "Last Updated",
+      "product": "Product",
+      "location": "Location"
+    }
+  }
+}

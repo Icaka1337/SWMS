@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (inventoryItem(); as inventoryItemRef) {
+      <div>
+        <h2 data-cy="inventoryItemDetailsHeading"><span jhiTranslate="swmsApp.inventoryItem.detail.title">Inventory Item</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ inventoryItemRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.inventoryItem.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ inventoryItemRef.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.inventoryItem.lastUpdated">Last Updated</span></dt>
+          <dd>
+            <span>{{ inventoryItemRef.lastUpdated | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.inventoryItem.product">Product</span></dt>
+          <dd>
+            @if (inventoryItem()!.product) {
+              <div>
+                <a [routerLink]="['/product', inventoryItem()!.product?.id, 'view']">{{ inventoryItemRef.product?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="swmsApp.inventoryItem.location">Location</span></dt>
+          <dd>
+            @if (inventoryItem()!.location) {
+              <div>
+                <a [routerLink]="['/warehouse-location', inventoryItem()!.location?.id, 'view']">{{ inventoryItemRef.location?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/inventory-item', inventoryItemRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

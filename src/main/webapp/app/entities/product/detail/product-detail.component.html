@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (product(); as productRef) {
+      <div>
+        <h2 data-cy="productDetailsHeading"><span jhiTranslate="swmsApp.product.detail.title">Product</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ productRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.name">Name</span></dt>
+          <dd>
+            <span>{{ productRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.sku">Sku</span></dt>
+          <dd>
+            <span>{{ productRef.sku }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.description">Description</span></dt>
+          <dd>
+            <span>{{ productRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.category">Category</span></dt>
+          <dd>
+            <span>{{ productRef.category }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.unit">Unit</span></dt>
+          <dd>
+            <span>{{ productRef.unit }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.barcode">Barcode</span></dt>
+          <dd>
+            <span>{{ productRef.barcode }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.minStock">Min Stock</span></dt>
+          <dd>
+            <span>{{ productRef.minStock }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.maxStock">Max Stock</span></dt>
+          <dd>
+            <span>{{ productRef.maxStock }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.reorderLevel">Reorder Level</span></dt>
+          <dd>
+            <span>{{ productRef.reorderLevel }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.createdAt">Created At</span></dt>
+          <dd>
+            <span>{{ productRef.createdAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.updatedAt">Updated At</span></dt>
+          <dd>
+            <span>{{ productRef.updatedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.product.supplier">Supplier</span></dt>
+          <dd>
+            @if (product()!.supplier) {
+              <div>
+                <a [routerLink]="['/supplier', product()!.supplier?.id, 'view']">{{ productRef.supplier?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product', productRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

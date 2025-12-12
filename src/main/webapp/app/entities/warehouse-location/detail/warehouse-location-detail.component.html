@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (warehouseLocation(); as warehouseLocationRef) {
+      <div>
+        <h2 data-cy="warehouseLocationDetailsHeading">
+          <span jhiTranslate="swmsApp.warehouseLocation.detail.title">Warehouse Location</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ warehouseLocationRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.warehouseLocation.name">Name</span></dt>
+          <dd>
+            <span>{{ warehouseLocationRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.warehouseLocation.section">Section</span></dt>
+          <dd>
+            <span>{{ warehouseLocationRef.section }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.warehouseLocation.capacity">Capacity</span></dt>
+          <dd>
+            <span>{{ warehouseLocationRef.capacity }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.warehouseLocation.description">Description</span></dt>
+          <dd>
+            <span>{{ warehouseLocationRef.description }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/warehouse-location', warehouseLocationRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

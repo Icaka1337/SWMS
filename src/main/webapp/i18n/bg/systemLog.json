@@ -1,0 +1,28 @@
+{
+  "swmsApp": {
+    "systemLog": {
+      "home": {
+        "title": "System Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов System Log",
+        "createOrEditLabel": "Създайте или редактирайте System Log",
+        "notFound": "System Logs не са намерени"
+      },
+      "created": "Създаден е нов System Log с идентификатор {{ param }}",
+      "updated": "System Log с идентификатор {{ param }} e oбновен",
+      "deleted": "System Log с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете System Log {{ id }}?"
+      },
+      "detail": {
+        "title": "System Log"
+      },
+      "id": "ID",
+      "username": "Username",
+      "action": "Action",
+      "entityName": "Entity Name",
+      "details": "Details",
+      "timestamp": "Timestamp"
+    }
+  }
+}

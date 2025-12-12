@@ -1,0 +1,35 @@
+{
+  "swmsApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Product",
+        "createOrEditLabel": "Създайте или редактирайте Product",
+        "notFound": "Products не са намерени"
+      },
+      "created": "Създаден е нов Product с идентификатор {{ param }}",
+      "updated": "Product с идентификатор {{ param }} e oбновен",
+      "deleted": "Product с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "sku": "Sku",
+      "description": "Description",
+      "category": "Category",
+      "unit": "Unit",
+      "barcode": "Barcode",
+      "minStock": "Min Stock",
+      "maxStock": "Max Stock",
+      "reorderLevel": "Reorder Level",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "supplier": "Supplier"
+    }
+  }
+}

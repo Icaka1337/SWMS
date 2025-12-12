@@ -1,0 +1,94 @@
+entity Product {
+  name String required,
+  sku String required,
+  description String,
+  category String,
+  unit String,
+  barcode String,
+  minStock Integer required,
+  maxStock Integer required,
+  reorderLevel Integer required,
+  createdAt Instant,
+  updatedAt Instant
+}
+
+entity Supplier {
+  name String required,
+  contactInfo String,
+  reliabilityScore Double,
+  email String,
+  phone String
+}
+
+entity Customer {
+  name String required,
+  email String,
+  phone String
+}
+
+entity WarehouseLocation {
+  name String required,
+  section String,
+  capacity Integer,
+  description String
+}
+
+entity InventoryItem {
+  quantity Integer required,
+  lastUpdated Instant
+}
+
+entity Transaction {
+  type String required,
+  quantity Integer required,
+  date Instant required,
+  notes String
+}
+
+entity AIInsight {
+  type String required,
+  message String required,
+  confidence Double,
+  generatedAt Instant required
+}
+
+entity SystemLog {
+  username String,
+  action String,
+  entityName String,
+  details String,
+  timestamp Instant required
+}
+
+relationship ManyToOne {
+  Product{supplier} to Supplier
+}
+
+relationship ManyToOne {
+  InventoryItem{product required} to Product
+}
+
+relationship ManyToOne {
+  InventoryItem{location required} to WarehouseLocation
+}
+
+relationship ManyToOne {
+  Transaction{product required} to Product
+}
+
+relationship ManyToOne {
+  Transaction{sourceLocation} to WarehouseLocation
+  Transaction{targetLocation} to WarehouseLocation
+}
+
+relationship ManyToOne {
+  AIInsight{product required} to Product
+}
+relationship ManyToOne {
+  Transaction{user} to User
+}
+
+dto * with mapstruct
+service all with serviceImpl
+paginate * with pagination
+filter *

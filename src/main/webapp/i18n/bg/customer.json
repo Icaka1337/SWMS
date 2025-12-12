@@ -1,0 +1,26 @@
+{
+  "swmsApp": {
+    "customer": {
+      "home": {
+        "title": "Customers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Customer",
+        "createOrEditLabel": "Създайте или редактирайте Customer",
+        "notFound": "Customers не са намерени"
+      },
+      "created": "Създаден е нов Customer с идентификатор {{ param }}",
+      "updated": "Customer с идентификатор {{ param }} e oбновен",
+      "deleted": "Customer с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Customer {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  }
+}

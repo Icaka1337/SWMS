@@ -1,0 +1,27 @@
+{
+  "swmsApp": {
+    "warehouseLocation": {
+      "home": {
+        "title": "Warehouse Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Warehouse Location",
+        "createOrEditLabel": "Create or edit a Warehouse Location",
+        "notFound": "No Warehouse Locations found"
+      },
+      "created": "A new Warehouse Location is created with identifier {{ param }}",
+      "updated": "A Warehouse Location is updated with identifier {{ param }}",
+      "deleted": "A Warehouse Location is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Warehouse Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Warehouse Location"
+      },
+      "id": "ID",
+      "name": "Name",
+      "section": "Section",
+      "capacity": "Capacity",
+      "description": "Description"
+    }
+  }
+}

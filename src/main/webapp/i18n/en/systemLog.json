@@ -1,0 +1,28 @@
+{
+  "swmsApp": {
+    "systemLog": {
+      "home": {
+        "title": "System Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new System Log",
+        "createOrEditLabel": "Create or edit a System Log",
+        "notFound": "No System Logs found"
+      },
+      "created": "A new System Log is created with identifier {{ param }}",
+      "updated": "A System Log is updated with identifier {{ param }}",
+      "deleted": "A System Log is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete System Log {{ id }}?"
+      },
+      "detail": {
+        "title": "System Log"
+      },
+      "id": "ID",
+      "username": "Username",
+      "action": "Action",
+      "entityName": "Entity Name",
+      "details": "Details",
+      "timestamp": "Timestamp"
+    }
+  }
+}

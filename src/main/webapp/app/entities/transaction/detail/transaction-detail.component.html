@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (transaction(); as transactionRef) {
+      <div>
+        <h2 data-cy="transactionDetailsHeading"><span jhiTranslate="swmsApp.transaction.detail.title">Transaction</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ transactionRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.type">Type</span></dt>
+          <dd>
+            <span>{{ transactionRef.type }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ transactionRef.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.date">Date</span></dt>
+          <dd>
+            <span>{{ transactionRef.date | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.notes">Notes</span></dt>
+          <dd>
+            <span>{{ transactionRef.notes }}</span>
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.product">Product</span></dt>
+          <dd>
+            @if (transaction()!.product) {
+              <div>
+                <a [routerLink]="['/product', transaction()!.product?.id, 'view']">{{ transactionRef.product?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.sourceLocation">Source Location</span></dt>
+          <dd>
+            @if (transaction()!.sourceLocation) {
+              <div>
+                <a [routerLink]="['/warehouse-location', transaction()!.sourceLocation?.id, 'view']">{{
+                  transactionRef.sourceLocation?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="swmsApp.transaction.targetLocation">Target Location</span></dt>
+          <dd>
+            @if (transaction()!.targetLocation) {
+              <div>
+                <a [routerLink]="['/warehouse-location', transaction()!.targetLocation?.id, 'view']">{{
+                  transactionRef.targetLocation?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/transaction', transactionRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

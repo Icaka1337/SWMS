@@ -1,0 +1,27 @@
+{
+  "swmsApp": {
+    "warehouseLocation": {
+      "home": {
+        "title": "Warehouse Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Warehouse Location",
+        "createOrEditLabel": "Създайте или редактирайте Warehouse Location",
+        "notFound": "Warehouse Locations не са намерени"
+      },
+      "created": "Създаден е нов Warehouse Location с идентификатор {{ param }}",
+      "updated": "Warehouse Location с идентификатор {{ param }} e oбновен",
+      "deleted": "Warehouse Location с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Warehouse Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Warehouse Location"
+      },
+      "id": "ID",
+      "name": "Name",
+      "section": "Section",
+      "capacity": "Capacity",
+      "description": "Description"
+    }
+  }
+}
