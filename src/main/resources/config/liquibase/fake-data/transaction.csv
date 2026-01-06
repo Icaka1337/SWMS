@@ -1,11 +1,11 @@
 id;type;quantity;date;notes;product_id
-1;mechanic lost;30879;2025-11-25T17:53:15;um during where;1
-2;drat;16626;2025-11-25T03:56:08;without;2
-3;scamper custom;27787;2025-11-25T21:40:02;why scamper;3
-4;amid frilly;23440;2025-11-25T09:52:13;above;4
-5;finally;30817;2025-11-24T22:51:48;early phooey;5
-6;indeed pull;29508;2025-11-25T21:29:51;jaywalk trusty;6
-7;confound yahoo swiftly;21427;2025-11-24T23:12:29;or upside-down;7
-8;aside gown;11214;2025-11-25T14:54:34;kindheartedly memorable irritably;8
-9;empty pull and;26404;2025-11-25T08:06:27;slow apparatus;9
-10;when disbar;4714;2025-11-25T15:04:08;accredit international fooey;10
+1;INBOUND;120;2025-11-25T17:53:15;Delivery received, invoice INV-2025-1125-001;1
+2;OUTBOUND;40;2025-11-25T03:56:08;Issued to customer order SO-2025-221;2
+3;OUTBOUND;15;2025-11-25T21:40:02;Used for internal packaging;7
+4;INBOUND;30;2025-11-25T09:52:13;Restock, delivery note DN-7841;4
+5;ADJUSTMENT;-5;2025-11-24T22:51:48;Stock recount correction;3
+6;OUTBOUND;10;2025-11-25T21:29:51;Issued to maintenance team;8
+7;INBOUND;50;2025-11-24T23:12:29;New batch received;5
+8;OUTBOUND;25;2025-11-25T14:54:34;Shipped for customer pickup;10
+9;INBOUND;200;2025-11-25T08:06:27;Fasteners restock, batch B-0811;9
+10;OUTBOUND;12;2025-11-25T15:04:08;Office consumption (markers);6

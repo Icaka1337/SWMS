@@ -63,7 +63,7 @@
           <dd>
             @if (product()!.supplier) {
               <div>
-                <a [routerLink]="['/supplier', product()!.supplier?.id, 'view']">{{ productRef.supplier?.id }}</a>
+                <a [routerLink]="['/supplier', product()!.supplier?.id, 'view']">{{ productRef.supplier?.name }}</a>
               </div>
             }
           </dd>

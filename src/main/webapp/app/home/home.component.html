@@ -1,82 +1,225 @@
-<div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
+﻿<div class="swms-shell">
+  <div class="swms-hero p-4 p-lg-5 mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7 position-relative swms-layer">
+        <div class="text-uppercase fw-bold small opacity-75 mb-2">Smart Warehouse Management System</div>
+        <h1 class="fw-bold mb-3">Command your inventory with clarity.</h1>
+        <p class="lead mb-4">SWMS dashboard surfaces stock health, flow velocity, and AI insights from your live data.</p>
+
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+          @if (account(); as accountRef) {
+            <div class="bg-white text-dark px-3 py-2 rounded shadow-sm d-flex align-items-center gap-2">
+              <div class="swms-dot swms-dot--small swms-dot--success"></div>
+              <div>
+                <div class="small text-muted">Signed in</div>
+                <div class="fw-semibold">{{ accountRef.login }}</div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-light fw-semibold">Open live operations</button>
+          } @else {
+            <button class="btn btn-light fw-semibold" (click)="login()">Sign in to your warehouse</button>
+            <a class="btn btn-outline-light fw-semibold" routerLink="/account/register">Create account</a>
+          }
+
+          <a
+            class="text-white d-flex align-items-center gap-2 text-decoration-none small opacity-75"
+            href="/swagger-ui/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>API console</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-5 position-relative swms-layer">
+        <div class="bg-white text-dark rounded-3 p-3 p-md-4 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="text-muted small">AI insights</div>
+            <span class="swms-pill" [ngClass]="healthStatus().className">{{ healthStatus().label }}</span>
+          </div>
+          <div class="swms-ai-block">
+            @if (aiHighlights().length > 0) {
+              @for (insight of aiHighlights(); track insight) {
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <div class="swms-dot swms-dot--primary mt-1"></div>
+                  <div>
+                    <div class="fw-semibold">{{ insight }}</div>
+                  </div>
+                </div>
+              }
+            } @else {
+              <div class="text-muted small">Waiting for insights...</div>
+            }
+          </div>
+          <div class="mt-3 d-flex flex-wrap gap-2">
+            <span class="swms-chip">AI summary</span>
+            <span class="swms-chip">Auto alerts</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Welcome, Java Hipster!</span> (Swms)</h1>
-
-    <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
-
-    <div>
-      @if (account() !== null) {
-        <div class="alert alert-success">
-          @if (account(); as accountRef) {
-            <span id="home-logged-message" jhiTranslate="home.logged.message" [translateValues]="{ username: accountRef.login }"
-              >You are logged in as user &quot;{{ accountRef.login }}&quot;.</span
-            >
-          }
+  <div class="row g-3 mb-4">
+    <div class="col-lg-3 col-md-6">
+      <div class="swms-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted small">Total products</span>
+          <span class="swms-pill bg-primary text-white">Catalog</span>
         </div>
-      } @else {
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-          <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a
-          ><span jhiTranslate="global.messages.info.authenticated.suffix"
-            >, you can try the default accounts:<br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;) <br />- User
-            (login=&quot;user&quot; and password=&quot;user&quot;).</span
-          >
+        <div class="fw-bold fs-3">{{ totalProducts() | number }}</div>
+        <div class="text-muted small">Active SKUs tracked</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="swms-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted small">Stock quantity</span>
+          <span class="swms-pill bg-success text-white">On hand</span>
         </div>
+        <div class="fw-bold fs-3">{{ stockQuantity() | number }}</div>
+        <div class="text-muted small">Units across all sites</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="swms-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted small">Low stock</span>
+          <span class="swms-pill bg-warning text-dark">Alert</span>
+        </div>
+        <div class="fw-bold fs-3">{{ lowStockCount() | number }}</div>
+        <div class="text-muted small">SKUs below threshold</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="swms-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted small">Overstock</span>
+          <span class="swms-pill bg-danger text-white">Risk</span>
+        </div>
+        <div class="fw-bold fs-3">{{ overStockCount() | number }}</div>
+        <div class="text-muted small">SKUs above max</div>
+      </div>
+    </div>
+  </div>
 
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.register.noaccount">You don&apos;t have an account yet?</span>&nbsp;
-          <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+  <div class="row g-3 mb-4">
+    <div class="col-lg-7">
+      <div class="swms-card p-4 h-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Incoming vs outgoing</h5>
+          <span class="swms-pill bg-primary text-white">Last 6 days</span>
         </div>
-      }
+        <div class="swms-chart">
+          <div class="swms-chart-grid"></div>
+          <div class="swms-chart-bars">
+            @for (bar of flowBars(); track $index) {
+              <div class="swms-chart-bar" [class.swms-chart-bar--accent]="bar.accent" [style.height.%]="bar.height"></div>
+            }
+          </div>
+        </div>
+        <div class="d-flex justify-content-between text-muted small mt-2">
+          <span>Inbound {{ flowSummary().incoming | number }}</span>
+          <span>Outbound {{ flowSummary().outgoing | number }}</span>
+        </div>
+      </div>
     </div>
 
-    <p jhiTranslate="home.question">If you have any question on JHipster:</p>
+    <div class="col-lg-5">
+      <div class="swms-card p-4 h-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Category mix</h5>
+          <!-- <span class="swms-pill bg-secondary text-white">Share</span> -->
+        </div>
+        <div class="swms-donut">
+          <div class="swms-donut-ring" [style.background]="categoryGradient()"></div>
+          <div class="swms-donut-center">
+            @if (topCategory(); as topCategoryRef) {
+              <div class="fw-bold">Top category</div>
+              <div class="text-muted small swms-donut-label">{{ topCategoryRef.name }} {{ topCategoryRef.percent }}%</div>
+            } @else {
+              <div class="text-muted small">No categories yet</div>
+            }
+          </div>
+        </div>
+        <div class="mt-3 swms-legend">
+          @for (item of categoryLegend(); track item.name) {
+            <div class="d-flex align-items-center gap-2">
+              <span [class]="item.dotClass"></span>
+              <span class="text-muted small">{{ item.name }} {{ item.percent }}%</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >JHipster homepage</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster on Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >follow &#64;jhipster on Twitter</a
-        >
-      </li>
-    </ul>
+  <div class="row g-3">
+    <div class="col-lg-7">
+      <div class="swms-card p-4 h-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Quick links</h5>
+          <span class="swms-pill bg-dark text-white">Modules</span>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <a class="swms-link-card" routerLink="/product">
+              <div class="swms-link-icon">PRD</div>
+              <div>
+                <div class="fw-semibold">Products</div>
+                <div class="text-muted small">Catalog, categories, pricing</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a class="swms-link-card" routerLink="/inventory-item">
+              <div class="swms-link-icon">INV</div>
+              <div>
+                <div class="fw-semibold">Inventory</div>
+                <div class="text-muted small">Stock, locations, availability</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a class="swms-link-card" routerLink="/transaction">
+              <div class="swms-link-icon">TXN</div>
+              <div>
+                <div class="fw-semibold">Transactions</div>
+                <div class="text-muted small">Inbound and outbound flow</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a class="swms-link-card" routerLink="/warehouse-location">
+              <div class="swms-link-icon">LOC</div>
+              <div>
+                <div class="fw-semibold">Locations</div>
+                <div class="text-muted small">Zones, racks, capacity</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      <span jhiTranslate="home.like">If you like JHipster, don&apos;t forget to give us a star on</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
+    <div class="col-lg-5">
+      <div class="swms-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="mb-0">AI insights summary</h6>
+          <span class="swms-chip">Auto</span>
+        </div>
+        @if (aiInsights().length > 0) {
+          <ul class="swms-list text-muted ps-3 mb-0">
+            @for (insight of aiInsights(); track insight) {
+              <li>{{ insight }}</li>
+            }
+          </ul>
+        } @else {
+          <div class="text-muted small">No insights available yet.</div>
+        }
+      </div>
+    </div>
   </div>
 </div>

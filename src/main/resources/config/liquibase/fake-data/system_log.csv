@@ -1,11 +1,11 @@
 id;username;action;entity_name;details;timestamp
-1;always daintily;rare;concrete repeatedly;underneath why;2025-11-24T22:43:47
-2;phooey;shoulder bah er;an;boldly;2025-11-25T19:33:15
-3;concerning;cuddly;bandwidth;excepting;2025-11-25T04:52:42
-4;lest;so proselytise oof;ferociously glisten mask;delirious victoriously;2025-11-25T09:30:43
-5;instantly debut elver;besides;over magnificent;until yowza;2025-11-25T17:26:58
-6;eek because for;less except quaintly;uh-huh anesthetize ha;viability founder;2025-11-25T04:08:20
-7;courteous up;whose grumpy circular;weep vamoose;instantly aftermath hollow;2025-11-25T14:24:58
-8;nimble gadzooks;vastly;drat;solution upliftingly secularize;2025-11-25T02:29:21
-9;indeed wordy;store ugh minus;ick yum;unfurl drat;2025-11-25T12:40:19
-10;rear duh;official strait pace;list;why new;2025-11-24T22:30:05
+1;hristo.ivanchev;CREATE;Product;Created product BG-POS-0057 (Thermal Paper Roll 57mm);2025-11-24T22:43:47
+2;ivan.petrov;UPDATE;InventoryItem;Adjusted quantity for product_id=2 at location_id=2 (+120);2025-11-25T19:33:15
+3;maria.ivanova;CREATE;Supplier;Added supplier "Package BG Ltd.";2025-11-25T04:52:42
+4;georgi.dimitrov;UPDATE;WarehouseLocation;Updated capacity for location_id=7 after recount;2025-11-25T09:30:43
+5;nikolay.stoyanov;CREATE;Transaction;Inbound delivery for product_id=5, qty=50;2025-11-25T17:26:58
+6;desislava.georgieva;DELETE;Product;Soft-delete requested for product_id=6 (duplicate entry);2025-11-25T04:08:20
+7;petar.todorov;UPDATE;Product;Updated reorder_level for product_id=1 from 100 to 120;2025-11-25T14:24:58
+8;valentin.kolev;CREATE;AIInsight;Generated LOW_STOCK_RISK insight for product_id=1;2025-11-25T02:29:21
+9;elena.peneva;UPDATE;Transaction;Corrected notes for transaction_id=8;2025-11-25T12:40:19
+10;aleksandar.iliev;CREATE;Customer;Created customer record id=10 (Aleksandar Iliev);2025-11-24T22:30:05

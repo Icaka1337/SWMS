@@ -35,13 +35,6 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
-            <th scope="col" jhiSortBy="id">
-              <div class="d-flex">
-                <span jhiTranslate="global.field.id">ID</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="name">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.product.name">Name</span>
@@ -132,9 +125,8 @@
           @for (product of products(); track trackId(product)) {
             <tr data-cy="entityTable">
               <td>
-                <a [routerLink]="['/product', product.id, 'view']">{{ product.id }}</a>
+                <a [routerLink]="['/product', product.id, 'view']">{{ product.name }}</a>
               </td>
-              <td>{{ product.name }}</td>
               <td>{{ product.sku }}</td>
               <td>{{ product.description }}</td>
               <td>{{ product.category }}</td>

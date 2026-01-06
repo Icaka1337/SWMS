@@ -1,11 +1,11 @@
 id;name;section;capacity;description
-1;gladly nor gadzooks;though;358;lazily known kindly
-2;mid woot;political;18266;once
-3;fuel gah;hence after labourer;21353;for
-4;gee provided;censor beneath hence;32423;bell
-5;dirty;outside supposing weakly;21117;flashy hoarse consequently
-6;masculinize incidentally;well-to-do;16755;jaggedly
-7;boohoo despite mysteriously;mob;27439;till chairperson
-8;hm;horse;15132;free geez incidentally
-9;since needily;loudly lobster vibrant;19214;crystallize courteous lobster
-10;obstruct;yum exhausted notwithstanding;11796;pulverize thongs after
+1;Sofia Central Warehouse;A1;1200;Main stock for office and POS consumables
+2;Plovdiv Trakia Warehouse;A2;2000;Packaging materials and boxes area
+3;Varna West Warehouse;B1;900;Safety/PPE and small items storage
+4;Sofia Maintenance Store;B2;300;Shelving for MRO and lubricants
+5;Ruse Cable Storage;C1;600;Cables and networking equipment
+6;Burgas Stationery Store;C2;800;Stationery and small consumables
+7;Stara Zagora Pallet Zone;D1;3500;Pallet area for bulky deliveries
+8;Sofia Chemicals Store;D2;250;Controlled storage for cleaning chemicals
+9;Pleven Fasteners Area;E1;1500;Fasteners, bolts, nuts and tools
+10;Sofia Label Storage;E2;500;Labels and printing supplies

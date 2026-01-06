@@ -27,7 +27,7 @@
           <dd>
             @if (inventoryItem()!.product) {
               <div>
-                <a [routerLink]="['/product', inventoryItem()!.product?.id, 'view']">{{ inventoryItemRef.product?.id }}</a>
+                <a [routerLink]="['/product', inventoryItem()!.product?.id, 'view']">{{ inventoryItemRef.product?.name }}</a>
               </div>
             }
           </dd>
@@ -35,7 +35,7 @@
           <dd>
             @if (inventoryItem()!.location) {
               <div>
-                <a [routerLink]="['/warehouse-location', inventoryItem()!.location?.id, 'view']">{{ inventoryItemRef.location?.id }}</a>
+                <a [routerLink]="['/warehouse-location', inventoryItem()!.location?.id, 'view']">{{ inventoryItemRef.location?.name }}</a>
               </div>
             }
           </dd>

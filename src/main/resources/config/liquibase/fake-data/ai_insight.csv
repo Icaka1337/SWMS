@@ -1,11 +1,11 @@
 id;type;message;confidence;generated_at;product_id
-1;for;entice;31528.19;2025-11-25T10:55:20;1
-2;favorable;funny abacus;20691.65;2025-11-25T13:17:12;2
-3;while;violently annually;26936.09;2025-11-25T16:00:26;3
-4;outlandish recklessly where;conservation;17344.43;2025-11-25T07:37:38;4
-5;actually;boohoo blink;4076.01;2025-11-25T04:01:27;5
-6;papa through;below;30998.67;2025-11-25T02:44:41;6
-7;optimistically free;fleck millet unaware;12010.38;2025-11-25T13:05:53;7
-8;roger;hence down;21547.15;2025-11-25T10:13:46;8
-9;terrible narrowcast aboard;banish tousle given;1485.88;2025-11-25T10:25:00;9
-10;woot league;little mockingly subtract;28295.74;2025-11-25T16:00:35;10
+1;LOW_STOCK_RISK;Stock for "Thermal Paper Roll 57mm" is below reorder level. Replenish within 3 days.;0.91;2025-11-25T10:55:20;1
+2;DEMAND_SPIKE;Higher than usual consumption for "Packaging Tape 48mm". Consider increasing safety stock.;0.83;2025-11-25T13:17:12;2
+3;SLOW_MOVING;Item "Latex Gloves Size M" is moving slower than average. Review min/max settings.;0.72;2025-11-25T16:00:26;3
+4;REORDER_SUGGESTION;Based on the last 30 days, reorder "WD-40 400ml" (estimated 12 units/week).;0.88;2025-11-25T07:37:38;4
+5;SUPPLIER_DELAY;Recent deliveries for "UTP Cable Cat6" show delays. Place orders earlier.;0.67;2025-11-25T04:01:27;5
+6;QUALITY_ALERT;Increased notes/issues recorded for "Permanent Marker Black". Check the latest batch.;0.61;2025-11-25T02:44:41;6
+7;FORECAST;Projected demand for "Shipping Boxes 40x30x30" is stable. Current stock covers ~18 days.;0.79;2025-11-25T13:05:53;7
+8;COST_OPTIMIZATION;Industrial Degreaser unit cost is higher this month. Compare alternative suppliers.;0.70;2025-11-25T10:13:46;8
+9;OVERSTOCK;Stock level for "Bolts M8x20 (100 pcs)" is above max. Pause reorders.;0.86;2025-11-25T10:25:00;9
+10;ANOMALY;Unusually large outbound quantity for "A4 Labels (100 sheets)". Verify the transaction.;0.58;2025-11-25T16:00:35;10

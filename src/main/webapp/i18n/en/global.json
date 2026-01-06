@@ -28,6 +28,7 @@
       },
       "admin": {
         "main": "Administration",
+        "adminAuthority": "Authority",
         "userManagement": "User management",
         "tracker": "User tracker",
         "metrics": "Metrics",
@@ -151,5 +152,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "This is your footer"
+  "footer": "SWMS @ 2025"
 }
