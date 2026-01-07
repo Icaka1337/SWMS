@@ -2,15 +2,19 @@
 name: swms
 services:
   app:
+    container_name: swms
+    build: ../../..
     image: swms
     environment:
-      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv6Addresses=false
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/swms
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/swms
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://aws-1-eu-west-1.pooler.supabase.com:5432/postgres?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=postgres.dvkpauzsvglnglhgdpaw
+      - SPRING_DATASOURCE_PASSWORD=SmartWarehouse-2025
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://aws-1-eu-west-1.pooler.supabase.com:5432/postgres?sslmode=require
     ports:
-      - 127.0.0.1:8080:8080
+      - 8080:8080
     healthcheck:
       test:
         - CMD

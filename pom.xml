@@ -5,7 +5,7 @@
 
     <groupId>com.uni.swms</groupId>
     <artifactId>swms</artifactId>
-    <version>v1.0.0-beta</version>
+    <version>v1.0.2-beta</version>
     <packaging>jar</packaging>
     <name>Swms</name>
     <description>Description for Swms</description>
@@ -44,7 +44,7 @@
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <jhipster-framework.version>8.11.0</jhipster-framework.version>
         <jib-maven-plugin.architecture>amd64</jib-maven-plugin.architecture>
-        <jib-maven-plugin.image>eclipse-temurin:17-jre-focal</jib-maven-plugin.image>
+        <jib-maven-plugin.image>icaka1337/docker-base-img:eclipse-temurin-21-jre-alpine</jib-maven-plugin.image>
         <jib-maven-plugin.version>3.4.5</jib-maven-plugin.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <liquibase-plugin.driver/>
