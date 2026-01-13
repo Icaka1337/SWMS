@@ -7,7 +7,7 @@
     "cacheProvider": "ehcache",
     "clientFramework": "angular",
     "clientTestFrameworks": [],
-    "clientTheme": "cosmo",
+    "clientTheme": "default",
     "clientThemeVariant": "primary",
     "creationTimestamp": 1764104754448,
     "databaseType": "sql",
