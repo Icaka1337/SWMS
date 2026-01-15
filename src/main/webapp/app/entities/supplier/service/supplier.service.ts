@@ -6,11 +6,13 @@ import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { ISupplier, NewSupplier } from '../supplier.model';
+import { IProduct } from 'app/entities/product/product.model';
 
 export type PartialUpdateSupplier = Partial<ISupplier> & Pick<ISupplier, 'id'>;
 
 export type EntityResponseType = HttpResponse<ISupplier>;
 export type EntityArrayResponseType = HttpResponse<ISupplier[]>;
+export type ProductArrayResponseType = HttpResponse<IProduct[]>;
 
 @Injectable({ providedIn: 'root' })
 export class SupplierService {
@@ -18,6 +20,7 @@ export class SupplierService {
   protected readonly applicationConfigService = inject(ApplicationConfigService);
 
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/suppliers');
+  protected productResourceUrl = this.applicationConfigService.getEndpointFor('api/products');
 
   create(supplier: NewSupplier): Observable<EntityResponseType> {
     return this.http.post<ISupplier>(this.resourceUrl, supplier, { observe: 'response' });
@@ -70,5 +73,10 @@ export class SupplierService {
       return [...suppliersToAdd, ...supplierCollection];
     }
     return supplierCollection;
+  }
+
+  getLinkedProducts(supplierId: number): Observable<ProductArrayResponseType> {
+    const options = createRequestOption({ 'supplierId.equals': supplierId, size: 1000 });
+    return this.http.get<IProduct[]>(this.productResourceUrl, { params: options, observe: 'response' });
   }
 }

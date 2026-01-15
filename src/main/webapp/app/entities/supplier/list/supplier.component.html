@@ -8,6 +8,11 @@
         <span jhiTranslate="swmsApp.supplier.home.refreshListLabel">Refresh list</span>
       </button>
 
+      <button class="btn btn-success me-2" (click)="exportToPDF()" [disabled]="isLoading || suppliers().length === 0">
+        <fa-icon icon="download"></fa-icon>
+        <span>Export to PDF</span>
+      </button>
+
       <button
         id="jh-create-entity"
         data-cy="entityCreateButton"
@@ -32,50 +37,41 @@
     </div>
   } @else {
     <div class="table-responsive table-entities" id="entities">
-      <table class="table table-striped" aria-describedby="page-heading">
-        <thead>
+      <table class="table table-striped table-hover" aria-describedby="page-heading">
+        <thead class="table-light">
           <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
-            <th scope="col" jhiSortBy="id">
-              <div class="d-flex">
-                <span jhiTranslate="global.field.id">ID</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="name">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.supplier.name">Name</span>
-
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
             <th scope="col" jhiSortBy="contactInfo">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.supplier.contactInfo">Contact Info</span>
-
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
             <th scope="col" jhiSortBy="reliabilityScore">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.supplier.reliabilityScore">Reliability Score</span>
-
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
             <th scope="col" jhiSortBy="email">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.supplier.email">Email</span>
-
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
             <th scope="col" jhiSortBy="phone">
               <div class="d-flex">
                 <span jhiTranslate="swmsApp.supplier.phone">Phone</span>
-
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
+            </th>
+            <th scope="col">
+              <span>Linked Products</span>
             </th>
             <th scope="col"></th>
           </tr>
@@ -84,13 +80,22 @@
           @for (supplier of suppliers(); track trackId(supplier)) {
             <tr data-cy="entityTable">
               <td>
-                <a [routerLink]="['/supplier', supplier.id, 'view']">{{ supplier.id }}</a>
+                <a [routerLink]="['/supplier', supplier.id, 'view']">{{ supplier.name }}</a>
               </td>
-              <td>{{ supplier.name }}</td>
               <td>{{ supplier.contactInfo }}</td>
-              <td>{{ supplier.reliabilityScore }}</td>
+              <td>
+                <span [class]="getReliabilityScoreClass(supplier.reliabilityScore)">
+                  {{ supplier.reliabilityScore }}
+                </span>
+              </td>
               <td>{{ supplier.email }}</td>
               <td>{{ supplier.phone }}</td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary" (click)="viewLinkedProducts(supplier)" title="View linked products">
+                  <fa-icon icon="eye"></fa-icon>
+                  View Products
+                </button>
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/supplier', supplier.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

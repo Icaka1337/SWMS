@@ -15,6 +15,9 @@ import { ISupplier } from '../supplier.model';
 
 import { EntityArrayResponseType, SupplierService } from '../service/supplier.service';
 import { SupplierDeleteDialogComponent } from '../delete/supplier-delete-dialog.component';
+import { SupplierProductsDialogComponent } from './supplier-products-dialog.component';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'jhi-supplier',
@@ -56,7 +59,6 @@ export class SupplierComponent implements OnInit {
   delete(supplier: ISupplier): void {
     const modalRef = this.modalService.open(SupplierDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.supplier = supplier;
-    // unsubscribe not needed because closed completes on modal close
     modalRef.closed
       .pipe(
         filter(reason => reason === ITEM_DELETED_EVENT),
@@ -79,6 +81,68 @@ export class SupplierComponent implements OnInit {
 
   navigateToPage(page: number): void {
     this.handleNavigation(page, this.sortState(), this.filters.filterOptions);
+  }
+
+  /**
+   * Get CSS class for reliability score badge
+   */
+  getReliabilityScoreClass(score: number | null | undefined): string {
+    if (!score) return 'badge bg-secondary';
+
+    if (score >= 7.5) return 'badge bg-success';
+    if (score >= 4) return 'badge bg-warning text-dark';
+    return 'badge bg-danger';
+  }
+
+  /**
+   * View linked products for a supplier
+   */
+  viewLinkedProducts(supplier: ISupplier): void {
+    const modalRef = this.modalService.open(SupplierProductsDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.supplier = supplier;
+  }
+
+  /**
+   * Export suppliers list to PDF using jsPDF
+   */
+  exportToPDF(): void {
+    const doc = new jsPDF();
+    const currentDate = new Date().toLocaleDateString();
+
+    // Add title
+    doc.setFontSize(18);
+    doc.text('Suppliers Report', 14, 20);
+
+    // Add generation date
+    doc.setFontSize(10);
+    doc.text(`Generated on: ${currentDate}`, 14, 28);
+
+    // Add total count
+    doc.text(`Total Suppliers: ${this.totalItems}`, 14, 34);
+
+    // Prepare table data
+    const tableData = this.suppliers().map(supplier => [
+      supplier.id?.toString() || '',
+      supplier.name || '',
+      supplier.contactInfo || '',
+      supplier.reliabilityScore?.toString() || '',
+      supplier.email || '',
+      supplier.phone || '',
+    ]);
+
+    // Add table using autoTable
+    autoTable(doc, {
+      head: [['ID', 'Name', 'Contact Info', 'Reliability', 'Email', 'Phone']],
+      body: tableData,
+      startY: 40,
+      styles: { fontSize: 8 },
+      headStyles: { fillColor: [41, 128, 185] },
+      alternateRowStyles: { fillColor: [245, 245, 245] },
+      margin: { top: 40 },
+    });
+
+    // Save the PDF
+    doc.save(`suppliers-report-${currentDate}.pdf`);
   }
 
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
