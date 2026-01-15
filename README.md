@@ -1,265 +1,279 @@
-# swms
+# SWMS - Smart Warehouse Management System
 
-This application was generated using JHipster 8.11.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.11.0](https://www.jhipster.tech/documentation-archive/v8.11.0).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
+[![Angular](https://img.shields.io/badge/Angular-19-red.svg)](https://angular.io/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green.svg)](https://spring.io/projects/spring-boot)
 
-## Project Structure
+## 📋 Описание
 
-Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
+**SWMS** (Smart Warehouse Management System) е интелигентна система за управление на складове, която предоставя цялостно решение за управление на продукти, инвентар, доставчици, клиенти и складови операции. Системата включва интегрирани AI препоръки за оптимизация на складовото стопанство.
 
-In the project root, JHipster generates configuration files for tools like git, prettier, eslint, husky, and others that are well known and you can find references in the web.
+### Ключови възможности
 
-`/src/*` structure follows default Java structure.
+- 📦 **Управление на продукти** - пълен контрол над продуктовия каталог
+- 🏭 **Управление на доставчици** - база данни с доставчици и рейтинг
+- 👥 **Управление на клиенти** - CRM функционалности
+- 📍 **Складови локации** - организация по секции и зони
+- 📊 **Инвентаризация** - проследяване на наличности в реално време
+- 🔄 **Транзакции** - приемане, издаване, трансфери
+- 🤖 **AI препоръки** - автоматични препоръки за оптимизация
+- 📝 **Системни логове** - пълен одит на операциите
 
-- `.yo-rc.json` - Yeoman configuration file
-  JHipster configuration is stored in this file at `generator-jhipster` key. You may find `generator-jhipster-*` for specific blueprints configuration.
-- `.yo-resolve` (optional) - Yeoman conflict resolver
-  Allows to use a specific action when conflicts are found skipping prompts for files that matches a pattern. Each line should match `[pattern] [action]` with pattern been a [Minimatch](https://github.com/isaacs/minimatch#minimatch) pattern and action been one of skip (default if omitted) or force. Lines starting with `#` are considered comments and are ignored.
-- `.jhipster/*.json` - JHipster entity configuration files
+---
 
-- `npmw` - wrapper to use locally installed npm.
-  JHipster installs Node and npm locally using the build tool by default. This wrapper makes sure npm is installed locally and uses it avoiding some differences different versions can cause. By using `./npmw` instead of the traditional `npm` you can configure a Node-less environment to develop or test your application.
-- `/src/main/docker` - Docker configurations for the application and services that the application depends on
+## 🏗️ Технологичен стек
 
-## Development
+### Backend
+- **Framework:** Spring Boot 3.x
+- **Език:** Java 17+
+- **Build Tool:** Maven
+- **API:** RESTful + Swagger/OpenAPI
 
-The build system will install automatically the recommended version of Node and npm.
+### Frontend
+- **Framework:** Angular
+- **Език:** TypeScript
+- **Styling:** SCSS
+- **Build Tool:** Webpack + Angular CLI
 
-We provide a wrapper to launch npm.
-You will only need to run this command when dependencies change in [package.json](package.json).
+### База данни
+- PostgreSQL база данни
+- Spring Data JPA
 
-```
-./npmw install
-```
+### Допълнителни инструменти
+- Docker (контейнеризация на проекта)
+- Jest (unit тестове)
+- SonarQube (анализ на кода)
 
-We use npm scripts and [Angular CLI][] with [Webpack][] as our build system.
+---
 
-Run the following commands in two separate terminals to create a blissful development experience where your browser
-auto-refreshes when files change on your hard drive.
+## 📊 Модел на данни
 
-```
+Системата управлява следните основни entities:
+
+### 🏷️ Product (Продукт)
+- Основна информация: име, SKU, описание, категория
+- Баркод и единица за измерване
+- Минимални/максимални нива на запас
+- Ниво за автоматично препоръчване
+- Връзка към доставчик
+
+### 🚚 Supplier (Доставчик)
+- Име и пълна контактна информация
+- Email, телефон, адрес
+- Рейтинг на надеждност
+
+### 👤 Customer (Клиент)
+- Клиентски данни
+- Контактна информация
+- История на поръчки
+
+### 📍 WarehouseLocation (Складова локация)
+- Име, секция, зона
+- Капацитет
+- Описание и характеристики
+
+### 📦 InventoryItem (Складова единица)
+- Текущо количество
+- Връзка към продукт и локация
+- Дата на последна актуализация
+
+### 🔄 Transaction (Транзакция)
+- Типове: получаване, изпращане, трансфер
+- Количество и дата
+- Източник и целева локация
+- Детайлни бележки
+
+### 🤖 AIInsight (AI препоръки)
+- Тип на препоръката
+- Съобщение и ниво на увереност
+- Автоматични препоръки за оптимизация
+
+### 📝 SystemLog (Системен лог)
+- Потребител и действие
+- Entity и детайли
+- Времеви печат за одит
+
+---
+
+## 🚀 Инсталация и стартиране
+
+### Системни изисквания
+
+- **Java:** 17 или по-нова версия
+- **Node.js:** (автоматично се инсталира през build системата)
+- **Maven:** (включен `mvnw` wrapper)
+- **Docker:** (опционално, за контейнеризация)
+
+### Стъпки за инсталация
+
+1. **Клонирайте репозиторито:**
+   ```bash
+   git clone https://github.com/Icaka1337/SWMS.git
+   cd SWMS
+   ```
+
+2. **Инсталирайте dependencies:**
+   ```bash
+   ./npmw install
+   ```
+
+3. **Стартирайте backend:**
+   ```bash
+   ./mvnw
+   ```
+
+4. **Стартирайте frontend (в нов терминал):**
+   ```bash
+   ./npmw start
+   ```
+
+5. **Отворете браузър:**
+   - Приложението е достъпно на: `http://localhost:9000`
+
+---
+
+## 🛠️ Разработка
+
+### Development режим
+
+Стартирайте backend и frontend в два отделни терминала:
+
+```bash
+# Терминал 1 - Backend
 ./mvnw
+
+# Терминал 2 - Frontend  
 ./npmw start
 ```
 
-Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `./npmw update` and `./npmw install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `./npmw help update`.
+### Тестване
 
-The `./npmw run` command will list all the scripts available to run for this project.
-
-### PWA Support
-
-JHipster ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.
-
-The service worker initialization code is disabled by default. To enable it, uncomment the following code in `src/main/webapp/app/app.config.ts`:
-
-```typescript
-ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
-```
-
-### Managing dependencies
-
-For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
-
-```
-./npmw install --save --save-exact leaflet
-```
-
-To benefit from TypeScript type definitions from [DefinitelyTyped][] repository in development, you would run following command:
-
-```
-./npmw install --save-dev --save-exact @types/leaflet
-```
-
-Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Edit [src/main/webapp/app/app.config.ts](src/main/webapp/app/app.config.ts) file:
-
-```
-import 'leaflet/dist/leaflet.js';
-```
-
-Edit [src/main/webapp/content/scss/vendor.scss](src/main/webapp/content/scss/vendor.scss) file:
-
-```
-@import 'leaflet/dist/leaflet.css';
-```
-
-Note: There are still a few other things remaining to do for Leaflet that we won't detail here.
-
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-### Using Angular CLI
-
-You can also use [Angular CLI][] to generate some custom client code.
-
-For example, the following command:
-
-```
-ng generate component my-component
-```
-
-will generate few files:
-
-```
-create src/main/webapp/app/my-component/my-component.component.html
-create src/main/webapp/app/my-component/my-component.component.ts
-update src/main/webapp/app/app.config.ts
-```
-
-## Building for production
-
-### Packaging as jar
-
-To build the final jar and optimize the swms application for production, run:
-
-```
-./mvnw -Pprod clean verify
-```
-
-This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
-To ensure everything worked, run:
-
-```
-java -jar target/*.jar
-```
-
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
-
-Refer to [Using JHipster in production][] for more details.
-
-### Packaging as war
-
-To package your application as a war in order to deploy it to an application server, run:
-
-```
-./mvnw -Pprod,war clean verify
-```
-
-### JHipster Control Center
-
-JHipster Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
-
-```
-docker compose -f src/main/docker/jhipster-control-center.yml up
-```
-
-## Testing
-
-### Spring Boot tests
-
-To launch your application's tests, run:
-
-```
+```bash
+# Backend тестове
 ./mvnw verify
-```
 
-### Client tests
-
-Unit tests are run by [Jest][]. They're located near components and can be run with:
-
-```
+# Frontend тестове
 ./npmw test
 ```
 
-## Others
+### Production build
 
-### Code quality using Sonar
-
-Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
-
+```bash
+./mvnw -Pprod clean verify
 ```
+
+Това ще генерира оптимизиран JAR файл в `target/` директорията.
+
+### Анализ на кода
+
+Стартирайте SonarQube за анализ на качеството на кода:
+
+```bash
 docker compose -f src/main/docker/sonar.yml up -d
+./mvnw -Pprod clean verify sonar:sonar
 ```
 
-Note: we have turned off forced authentication redirect for UI in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
+SonarQube е достъпен на: `http://localhost:9001`
 
-You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
+---
 
-Then, run a Sonar analysis:
+## 🐳 Docker
 
-```
-./mvnw -Pprod clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
-```
+### Стартиране на услугите
 
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
-
-```
-./mvnw initialize sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
-```
-
-Additionally, Instead of passing `sonar.password` and `sonar.login` as CLI arguments, these parameters can be configured from [sonar-project.properties](sonar-project.properties) as shown below:
-
-```
-sonar.login=admin
-sonar.password=admin
-```
-
-For more information, refer to the [Code quality page][].
-
-### Docker Compose support
-
-JHipster generates a number of Docker Compose configuration files in the [src/main/docker/](src/main/docker/) folder to launch required third party services.
-
-For example, to start required services in Docker containers, run:
-
-```
+```bash
 docker compose -f src/main/docker/services.yml up -d
 ```
 
-To stop and remove the containers, run:
+### Създаване на Docker image
 
-```
-docker compose -f src/main/docker/services.yml down
-```
-
-[Spring Docker Compose Integration](https://docs.spring.io/spring-boot/reference/features/dev-services.html) is enabled by default. It's possible to disable it in application.yml:
-
-```yaml
-spring:
-  ...
-  docker:
-    compose:
-      enabled: false
-```
-
-You can also fully dockerize your application and all the services that it depends on.
-To achieve this, first build a Docker image of your app by running:
-
-```sh
+```bash
+# За x86/x64 архитектура
 npm run java:docker
-```
 
-Or build a arm64 Docker image when using an arm64 processor os like MacOS with M1 processor family running:
-
-```sh
+# За ARM64 (Apple M1/M2)
 npm run java:docker:arm64
 ```
 
-Then run:
+### Стартиране на цялото приложение
 
-```sh
+```bash
 docker compose -f src/main/docker/app.yml up -d
 ```
 
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the Docker Compose sub-generator (`jhipster docker-compose`), which is able to generate Docker configurations for one or several JHipster applications.
+---
 
-## Continuous Integration (optional)
+## 📁 Структура на проекта
 
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
+```
+SWMS/
+├── src/
+│   ├── main/
+│   │   ├── java/           # Backend код (Spring Boot)
+│   │   ├── resources/      # Конфигурации и ресурси
+│   │   └── webapp/         # Frontend код (Angular)
+│   └── test/              # Тестове
+├── webpack/               # Webpack конфигурация
+├── pom.xml               # Maven dependencies
+├── package.json          # npm dependencies
+└── model.jdl             # JDL модел на данните
+```
 
-[JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 8.11.0 archive]: https://www.jhipster.tech/documentation-archive/v8.11.0
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.11.0/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.11.0/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.11.0/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v8.11.0/running-tests/
-[Code quality page]: https://www.jhipster.tech/documentation-archive/v8.11.0/code-quality/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v8.11.0/setting-up-ci/
-[Node.js]: https://nodejs.org/
-[NPM]: https://www.npmjs.com/
-[Webpack]: https://webpack.github.io/
-[BrowserSync]: https://www.browsersync.io/
-[Jest]: https://jestjs.io
-[Leaflet]: https://leafletjs.com/
-[DefinitelyTyped]: https://definitelytyped.org/
-[Angular CLI]: https://angular.dev/tools/cli
+---
+
+## 📦 Основни модули
+
+| Модул | Описание |
+|-------|----------|
+| **Product** | Управление на продуктова информация и каталог |
+| **Supplier** | База данни с доставчици и техни данни |
+| **Customer** | Информация за клиенти и CRM |
+| **WarehouseLocation** | Складови локации, секции и зони |
+| **InventoryItem** | Текущи наличности и запаси |
+| **Transaction** | Складови операции и движения |
+| **AIInsight** | AI препоръки и автоматични анализи |
+| **SystemLog** | Одит и проследяване на действия |
+
+---
+
+## 🔧 Конфигурация
+
+Основните конфигурационни файлове се намират в `src/main/resources/config/`:
+
+- `application.yml` - Основна конфигурация
+- `application-dev.yml` - Development настройки
+- `application-prod.yml` - Production настройки
+
+---
+
+## 📚 API документация
+
+API документацията е достъпна чрез Swagger UI след стартиране на приложението:
+
+```
+http://localhost:8080/swagger-ui/
+```
+
+---
+
+## 🤝 Принос
+
+Приносите са добре дошли! Моля, следвайте тези стъпки:
+
+1. Fork-нете проекта
+2. Създайте feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit-нете промените (`git commit -m 'Add some AmazingFeature'`)
+4. Push-нете към branch-а (`git push origin feature/AmazingFeature`)
+5. Отворете Pull Request
+
+---
+
+
+<div align="center">
+  
+**Направено с ❤️ за оптимизация на складовото управление**
+<br>
+**© 2025 SWMS. All rights reserved. [Licensed under MIT License](LICENSE)**
+
+</div>
